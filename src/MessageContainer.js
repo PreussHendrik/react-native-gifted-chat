@@ -143,7 +143,7 @@ export default class MessageContainer extends React.Component {
     return (
       <View
         ref='container'
-        style={styles.container}
+        style={[styles.container, this.props.messageContainerStyle]}
       >
         <ListView
           enableEmptySections={true}
