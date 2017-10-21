@@ -41,7 +41,7 @@ export default class Bubble extends React.Component {
       if (this.props.renderMessageText) {
         return this.props.renderMessageText(messageTextProps);
       }
-      return <MessageText {...messageTextProps}/>;
+      return <MessageText {...messageTextProps} />;
     }
     return null;
   }
@@ -121,7 +121,7 @@ export default class Bubble extends React.Component {
   render() {
     return (
       <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
-        <View style={[styles[this.props.position].wrapper, this.props.wrapperStyle[this.props.position], this.handleBubbleToNext(), this.handleBubbleToPrevious(), this.props.bubbleStyle]}>
+        <View style={[styles[this.props.position].wrapper, this.props.wrapperStyle[this.props.position], this.handleBubbleToNext(), this.handleBubbleToPrevious(), {backgroundColor: (this.props.isMe ? '#00a9c0' : 'white'), borderRadius: 25, padding: 10, marginBottom: 25, shadowOffset: {height: 3}, shadowColor: 'grey', shadowOpacity: 0.4}]}>
           <TouchableWithoutFeedback
             onLongPress={this.onLongPress}
             accessibilityTraits="text"

@@ -64,10 +64,21 @@ export default class MessageText extends React.Component {
     Communications.email([email], null, null, null, null);
   }
 
+  renderUserName() {
+    if (this.props.currentMessage.user) {
+      if (this.props.isMe) {
+        return <Text style={{color: 'white', fontWeight: 'bold', fontFamily: 'OpenSans', fontSize: 11}}>{`${this.props.currentMessage.user}:`}</Text>;
+      }
+      return <Text style={{color: 'black', fontWeight: 'bold', fontFamily: 'OpenSans', fontSize: 11}}>{`${this.props.currentMessage.user}:`}</Text>;
+    }
+    return null;
+  }
+
   render() {
     const linkStyle = StyleSheet.flatten([styles[this.props.position].link, this.props.linkStyle[this.props.position]]);
     return (
       <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
+        {this.renderUserName()}
         <ParsedText
           style={[styles[this.props.position].text, this.props.textStyle[this.props.position]]}
           parse={[
@@ -85,7 +96,8 @@ export default class MessageText extends React.Component {
 }
 
 const textStyle = {
-  fontSize: 16,
+  fontSize: 11,
+  fontFamily: 'OpenSans',
   lineHeight: 20,
   marginTop: 5,
   marginBottom: 5,
